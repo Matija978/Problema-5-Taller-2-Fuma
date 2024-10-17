@@ -1,0 +1,19 @@
+def cifrar_mensaje(mensaje: str, a: int, b: int) -> str:
+    mensaje = mensaje.lower()
+    mensaje_cifrado = ""
+    alfabeto = 'abcdefghijklmnopqrstuvwxyz'  
+    
+    for i in mensaje:
+        if i.isalpha(): 
+            indice_original = alfabeto.index(i)
+            nuevo_indice = (indice_original * a + b) % 26
+            letra_cifrada = alfabeto[nuevo_indice]
+        else:
+            letra_cifrada = i
+        mensaje_cifrado += letra_cifrada
+
+    return mensaje_cifrado.capitalize() 
+
+mensaje = "Si la gente no cree que las matematicas son simples, es solo porque no se dan cuenta de lo complicado que es la vida"
+print("Mensaje original:\n", mensaje)
+print("Mensaje cifrado:\n", cifrar_mensaje(mensaje, 11, 15))
